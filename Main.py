@@ -52,7 +52,7 @@ And the mome raths outgrabe."""
 
 
 def function1():
-    print("function1 call succeeeded")
+    print("function1 call succeeded")
     return
 
 
