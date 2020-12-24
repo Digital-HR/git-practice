@@ -61,5 +61,5 @@ def function2():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
