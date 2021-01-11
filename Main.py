@@ -17,7 +17,10 @@ the dark water in a curious way, and, far as I was from him, I could have
 sworn he was trembling. Involuntarily I glanced seaward—and distinguished 
 nothing except a single green light, minute and far away, that might have been
 the end of a dock. When I looked once more for Gatsby he had vanished, and I
-was alone again in the unquiet darkness."""
+was alone again in the unquiet darkness.
+
+This is my second change, still think I'm doing this wrong.
+"""
     print("Hello world!")
 
     function1()
