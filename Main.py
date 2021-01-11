@@ -2,7 +2,7 @@
 
 
 def main():
-    gatsby = """The silhoouette of a moving cat waavered across the mooonlight,
+    gatsby = """This is my change: The silhouette of a moving cat waavered across the mooonlight,
 and turning my head to watch it, I saw that I was not alone—fifty feet 
 away a figure had emerged from the shadow of my neighbor's mansion and 
 was standing with his hands in his pockets regarding the silver pepper 
