@@ -13,7 +13,7 @@ himself, come out to determine what share was his of our local heavens.
 I decided to call to him. Miss Baker had mentioned him at dinner, and that 
 would do for an introduction. But I didn't call to him, for he gave a sudden
 intimation that he was content to be alone—he stretched out his arms toward
-the dark, far as I was from him, I could have 
+the light sky in a curious way, and, far as I was from him, I could have 
 sworn he was trembling. Involuntarily I glanced seaward—and distinguished 
 nothing except a single green light, minute and far away, that might have been
 the end of a dock. When I looked once more for Gatsby he had vanished, and I
