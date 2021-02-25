@@ -16,8 +16,8 @@
 
 # How to contribute
 1. Assign yourself to an issue.
-2. Ensure you're checked out to the `main` branch locally by running `git branch`. You should see a list of branches with a star (*) next to `main`, indicating that you're checked out to it.
-3. Pull in the latest changes from `main` with `git pull origin main`.
+2. Ensure you're checked out to the `dev` branch locally by running `git branch`. You should see a list of branches with a star (*) next to `dev`, indicating that you're checked out to it.
+3. Pull in the latest changes from `dev` with `git pull origin dev`.
 4. Create a branch to fix the issue and check out to it.
    1. Use the issue number in the branch name: `git checkout -b issue-1`
    2. Optionally include a description of the change in the branch name. It's sometimes difficult to anticipate what the change will be before you make it, so don't stress too much, but the issue title could be used if you think it provides enough detail: `git checkout -b issue-1-add-interesting-text`
@@ -30,9 +30,9 @@
 7. Check that your staged changes are the ones you intend to commit: `git diff --cached`.
 8. Commit your changes with `git commit`. Remember to write an [informative commit message](https://forcepush.tech/missives-to-the-future-on-commit-messages-and-maintainability).
 9. Push your changes to remote with `git push`.
-10. Submit a pull request from your branch to `main` (the trunk branch).
-11. Once your PR has been approved, merge your branch into `main`.
-12. Locally checkout to `main` with `git checkout main` (note the `-b` flag is not needed since the branch already exists).
+10. Submit a pull request from your branch to `dev` (the trunk branch).
+11. Once your PR has been approved, merge your branch into `dev`.
+12. Locally checkout to `dev` with `git checkout dev` (note the `-b` flag is not needed since the branch already exists).
 13. Pull the latest changes from origin with `git pull`.
 14. Delete your local feature branch with `git branch -d issue-1`.
 
