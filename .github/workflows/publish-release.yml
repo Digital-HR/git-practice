@@ -56,3 +56,23 @@ jobs:
           body_path: '.github/RELEASE_TEMPLATE.md'
           draft: true
           prerelease: false
+      - name: "Get PR number"
+        run: |
+          echo PR_NUMBER="$(echo ${$GITHUB_REF#refs/pull/} | sed 's/\/merge//')" >> $GITHUB_ENV
+          echo "$PR_NUMBER"
+      - name: "Mirror release PR to dev"
+        uses: thomaseizinger/create-pull-request@1.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          head: release/${{env.RELEASE_VERSION}}
+          base: dev
+          title: Release ${{env.RELEASE_VERSION}}
+          reviewers: ${{ github.actor }} # By default, we request a review from the person who triggered the workflow.
+          # Write a nice message to the user.
+          # We are claiming things here based on the `publish-new-release.yml` workflow.
+          # You should obviously adopt it to say the truth depending on your release workflow :)
+          body: |
+            Hi @${{ github.actor }}!
+            This PR was created in response to a merge of PR ${{ env.PR_NUMBER }}.
+            Since that PR was approved, this PR can be merged into `dev`.

@@ -56,7 +56,7 @@ jobs:
       - name: Push new branch
         run: git push origin release/v${{ github.event.inputs.version }}
 
-      - name: Create pull request
+      - name: Create pull request to main
         uses: thomaseizinger/create-pull-request@1.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
