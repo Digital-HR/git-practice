@@ -1,6 +1,6 @@
 ---
 name: Implementation ticket
-about: Describe this issue template's purpose here.
+about: [Devs only] A ticket describing implementation details of part of a Feature Request
 title: 'Implementation: '
 labels: ''
 assignees: ''
