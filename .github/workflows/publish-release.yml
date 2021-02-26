@@ -1,0 +1,58 @@
+name: "Publish new release"
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
+
+jobs:
+  release:
+    name: Publish new release
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true # only merged pull requests must trigger this job
+    steps:
+      - name: Extract version from branch name (for release branches)
+        if: startsWith(github.event.pull_request.head.ref, 'release/')
+        run: |
+          BRANCH_NAME="${{ github.event.pull_request.head.ref }}"
+          VERSION=${BRANCH_NAME#release/}
+          echo "RELEASE_VERSION=$VERSION" >> $GITHUB_ENV
+      - name: Extract version from branch name (for hotfix branches)
+        if: startsWith(github.event.pull_request.head.ref, 'hotfix/')
+        run: |
+          BRANCH_NAME="${{ github.event.pull_request.head.ref }}"
+          VERSION=${BRANCH_NAME#hotfix/}
+          echo "RELEASE_VERSION=$VERSION" >> $GITHUB_ENV
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0        # Need to deep-clone all commits
+      - name: Merged Pull Requests
+        run: |
+          # Append all merge commits and authors since last tag until current
+          # commit into the release template under "Pull Requests". This change
+          # is NOT committed, and is only used for generating the release draft
+          # body later in this workflow job.
+          git log $(git describe HEAD --tags --abbrev=0)..HEAD --pretty='format:* %h %s%n  * %an' --merges >> ".github/RELEASE_TEMPLATE.md"
+      - name: Commits
+        run: |
+          # Append all commit titles and authors since last tag until current
+          # commit into the release template. This change is NOT committed,
+          # and is only used for generating the release draft body in the next
+          # step of this workflow job.
+          echo -e "\n\n# Commits" >> ".github/RELEASE_TEMPLATE.md"
+          git log $(git describe HEAD --tags --abbrev=0)..HEAD --pretty='format:* %h %s%n  * %an' --no-merges >> ".github/RELEASE_TEMPLATE.md"
+
+      - name: Create Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        with:
+          # Names the release and tag after the version in pyproject.toml .
+          tag_name: ${{env.RELEASE_VERSION}}
+          release_name: ${{env.RELEASE_VERSION}}
+          body_path: '.github/RELEASE_TEMPLATE.md'
+          draft: true
+          prerelease: false
