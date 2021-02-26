@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "git-practice"
-version = "0.3.0"
+version = "0.2.1"
 description = "Digital HR Git Practice"
 authors = ["Your Name <you@example.com>"]
 
