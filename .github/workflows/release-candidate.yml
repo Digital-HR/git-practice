@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'The version you want to release. https://semver.org'
+        description: 'The version X.Y.Z you want to release. https://semver.org'
         required: true
 
 jobs:
