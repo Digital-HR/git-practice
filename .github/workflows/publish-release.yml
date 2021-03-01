@@ -69,10 +69,8 @@ jobs:
           base: dev
           title: Release ${{env.RELEASE_VERSION}}
           reviewers: ${{ github.actor }} # By default, we request a review from the person who triggered the workflow.
-          # Write a nice message to the user.
-          # We are claiming things here based on the `publish-new-release.yml` workflow.
-          # You should obviously adopt it to say the truth depending on your release workflow :)
           body: |
             Hi @${{ github.actor }}!
-            This PR was created in response to a merge of PR ${{ env.PR_NUMBER }}.
-            Since that PR was approved, this PR can be merged into `dev`.
+
+            Great job releasing ${{env.RELEASE_VERSION}} in PR ${{ env.PR_NUMBER }} :tada:! All that's left is to PR any changes introduced in the `${{ github.event.pull_request.head.ref }}` branch into the `dev` branch.
+            Since you already approved the release, you can merge `${{ github.event.pull_request.head.ref }}` directly into `dev` now.
