@@ -70,7 +70,7 @@ jobs:
         with:
           head: ${{env.BRANCH_NAME}}
           base: dev
-          title: Release ${{env.RELEASE_VERSION}}
+          title: Release ${{env.RELEASE_VERSION}} Cleanup
           reviewers: ${{ github.actor }} # By default, we request a review from the person who triggered the workflow.
           body: |
             Hi @${{ github.actor }}!
