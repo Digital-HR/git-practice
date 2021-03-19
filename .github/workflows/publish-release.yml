@@ -19,12 +19,14 @@ jobs:
           BRANCH_NAME="${{ github.event.pull_request.head.ref }}"
           VERSION=${BRANCH_NAME#release/}
           echo "RELEASE_VERSION=$VERSION" >> $GITHUB_ENV
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
       - name: Extract version from branch name (for hotfix branches)
         if: startsWith(github.event.pull_request.head.ref, 'hotfix/')
         run: |
           BRANCH_NAME="${{ github.event.pull_request.head.ref }}"
           VERSION=${BRANCH_NAME#hotfix/}
           echo "RELEASE_VERSION=$VERSION" >> $GITHUB_ENV
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
       - name: Checkout code
         uses: actions/checkout@v2
         with:
@@ -58,16 +60,17 @@ jobs:
           prerelease: false
       - name: "Get PR number"
         run: |
-          echo PR_NUMBER=$(sed 's/\/merge//' <<< "${GITHUB_REF#refs/pull/}") >> $GITHUB_ENV
-          echo "$PR_NUMBER"
+          # https://docs.github.com/en/actions/reference/events-that-trigger-workflows#pull_request
+          echo "PR_NUMBER=#${{ github.event.pull_request.number }}" >> $GITHUB_ENV
+          echo "${{env.PR_NUMBER}}"
       - name: "Mirror release PR to dev"
         uses: thomaseizinger/create-pull-request@1.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          head: release/${{env.RELEASE_VERSION}}
+          head: ${{env.BRANCH_NAME}}
           base: dev
-          title: Release ${{env.RELEASE_VERSION}}
+          title: Release ${{env.RELEASE_VERSION}} Cleanup
           reviewers: ${{ github.actor }} # By default, we request a review from the person who triggered the workflow.
           body: |
             Hi @${{ github.actor }}!
