@@ -17,7 +17,7 @@ def function2():
     return
 
 def sortedEvens(inputList):
-    return [x for x in inputLists if (x % 2) == 0].sort()
+    return sorted([x for x in inputList if (x % 2) == 0])
 
 
 def isLeapYear(year):
