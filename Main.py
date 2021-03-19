@@ -21,6 +21,9 @@ def function2():
     print("function2 call suceeded")
     return
 
+def sortedEvens(inputList):
+    return sorted([x for x in inputList if (x % 2) == 0])
+
 
 def isLeapYear(year):
     return year % 4 == 0
