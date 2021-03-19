@@ -11,6 +11,11 @@ def function1():
     print("function1 call succeeded")
     return
 
+def removeDupe(inputList):
+   inputList = list(set(inputList))
+   return inputList
+
+
 
 def function2():
     print("function2 call suceeded")
