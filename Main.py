@@ -17,5 +17,9 @@ def function2():
     return
 
 
+def isLeapYear(year):
+    return year % 4 == 0
+
+
 if __name__ == "__main__":
     main()
