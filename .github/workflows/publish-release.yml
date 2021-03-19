@@ -61,7 +61,7 @@ jobs:
       - name: "Get PR number"
         run: |
           # https://docs.github.com/en/actions/reference/events-that-trigger-workflows#pull_request
-          echo PR_NUMBER=$(sed 's/\/merge//' <<< "${${{github.ref}}#refs/pull/}") >> $GITHUB_ENV
+          echo "PR_NUMBER=#${{ github.event.pull_request.number }}" >> $GITHUB_ENV
           echo "${{env.PR_NUMBER}}"
       - name: "Mirror release PR to dev"
         uses: thomaseizinger/create-pull-request@1.0.0
