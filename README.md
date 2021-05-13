@@ -10,7 +10,7 @@ The team's sandbox repo for practicing Git stuff.
 3. Set your GitHub credentials:
    1. If you want to clone with HTTPS, [cache your GitHub credentials in Git](https://docs.github.com/en/free-pro-team@latest/github/using-git/caching-your-github-credentials-in-git).
    2. If you want to clone with SSH, you'll need to first [generate the SSH key](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent), then you'll have to [add the key to your GitHub account](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account).
-4. [Optional] set your default Git editor to VS Code with `git config --global core.editor "code --wait"`.
+4. [Optional] [Add VS Code to your PATH](https://stackoverflow.com/a/58377413/6310633) and set your default Git editor to VS Code with `git config --global core.editor "code --wait"`.
 
 # Cloning the repo
 1. Clone the repo using `git clone git@github.com:Digital-HR/git-practice.git` if you set up an SSH key in the configuration steps above, or using `git clone https://github.com/Digital-HR/git-practice.git` if you cached your GitHub credentials instead.
